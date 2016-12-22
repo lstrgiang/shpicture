@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cs494-shpicture" default="all">
+  
+  
+  <property file="cs494-shpicture.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.jfoenix.classpath">
+    <pathelement location="${basedir}/../../../../../Users/giangle/Downloads/jfoenix.jar"/>
+  </path>
+  
+  <path id="library.sqlite-jdbc-3.8.10.1.classpath">
+    <pathelement location="${basedir}/../../../../../Users/giangle/Downloads/sqlite-jdbc-3.8.10.1.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CS494-SHPicture -->
+  
+  <dirname property="module.cs494-shpicture.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.cs494-shpicture" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cs494-shpicture" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cs494-shpicture" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cs494-shpicture" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="cs494-shpicture.output.dir" value="${module.cs494-shpicture.basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture/out/production/CS494-SHPicture"/>
+  <property name="cs494-shpicture.testoutput.dir" value="${module.cs494-shpicture.basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture/out/test/CS494-SHPicture"/>
+  
+  <path id="cs494-shpicture.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cs494-shpicture.module.production.classpath">
+    <path refid="${module.jdk.classpath.cs494-shpicture}"/>
+    <path refid="library.sqlite-jdbc-3.8.10.1.classpath"/>
+    <path refid="library.jfoenix.classpath"/>
+  </path>
+  
+  <path id="cs494-shpicture.runtime.production.module.classpath">
+    <pathelement location="${cs494-shpicture.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.8.10.1.classpath"/>
+    <path refid="library.jfoenix.classpath"/>
+  </path>
+  
+  <path id="cs494-shpicture.module.classpath">
+    <path refid="${module.jdk.classpath.cs494-shpicture}"/>
+    <pathelement location="${cs494-shpicture.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.8.10.1.classpath"/>
+    <path refid="library.jfoenix.classpath"/>
+  </path>
+  
+  <path id="cs494-shpicture.runtime.module.classpath">
+    <pathelement location="${cs494-shpicture.testoutput.dir}"/>
+    <pathelement location="${cs494-shpicture.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.8.10.1.classpath"/>
+    <path refid="library.jfoenix.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cs494-shpicture">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cs494-shpicture">
+    <patternset refid="excluded.from.module.cs494-shpicture"/>
+  </patternset>
+  
+  <path id="cs494-shpicture.module.sourcepath">
+    <dirset dir="${module.cs494-shpicture.basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture">
+      <include name="src"/>
+      <include name="src/com/cs494/client/screen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cs494-shpicture" depends="compile.module.cs494-shpicture.production,compile.module.cs494-shpicture.tests" description="Compile module CS494-SHPicture"/>
+  
+  <target name="compile.module.cs494-shpicture.production" depends="register.custom.compilers" description="Compile module CS494-SHPicture; production classes">
+    <mkdir dir="${cs494-shpicture.output.dir}"/>
+    <javac2 destdir="${cs494-shpicture.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cs494-shpicture}/javac">
+      <compilerarg line="${compiler.args.cs494-shpicture}"/>
+      <bootclasspath refid="cs494-shpicture.module.bootclasspath"/>
+      <classpath refid="cs494-shpicture.module.production.classpath"/>
+      <src refid="cs494-shpicture.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cs494-shpicture"/>
+    </javac2>
+    
+    <copy todir="${cs494-shpicture.output.dir}">
+      <fileset dir="${module.cs494-shpicture.basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.cs494-shpicture.basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture/src/com/cs494/client/screen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cs494-shpicture.tests" depends="register.custom.compilers,compile.module.cs494-shpicture.production" description="compile module CS494-SHPicture; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cs494-shpicture" description="cleanup module">
+    <delete dir="${cs494-shpicture.output.dir}"/>
+    <delete dir="${cs494-shpicture.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.cs494-shpicture, clean.artifact.cs494-shpicture" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.cs494-shpicture" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.cs494-shpicture" value="${basedir}/../../../../../Users/giangle/02_StudySpace/02_Assignments/CS494-SHPicture/out/artifacts/CS494_SHPicture"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.CS494_SHPicture" value="${artifacts.temp.dir}/CS494_SHPicture.jar"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.cs494-shpicture" description="clean CS494-SHPicture artifact output">
+    <delete dir="${artifact.output.cs494-shpicture}"/>
+  </target>
+  
+  <target name="artifact.cs494-shpicture" depends="init.artifacts, compile.module.cs494-shpicture" description="Build &#39;CS494-SHPicture&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.cs494-shpicture}"/>
+    <copy todir="${artifact.temp.output.CS494_SHPicture}">
+      <fileset dir="${cs494-shpicture.output.dir}"/>
+    </copy>
+    <fx:fileset id="all_but_CS494_SHPicture" dir="${artifact.temp.output.CS494_SHPicture}" includes="**/*.jar">
+      <exclude name="CS494_SHPicture.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_CS494_SHPicture" dir="${artifact.temp.output.CS494_SHPicture}" includes="**/*.jar"/>
+    <fx:application id="CS494_SHPicture_id" name="CS494-SHPicture" mainClass="com.cs494.client.Main" version="1.0.0"/>
+    <fx:csstobin outdir="${artifact.temp.output.CS494_SHPicture}">
+      <fileset dir="${artifact.temp.output.CS494_SHPicture}" includes="**/*.css"/>
+    </fx:csstobin>
+    <fx:jar destfile="${artifact.temp.output.CS494_SHPicture}/CS494_SHPicture.jar">
+      <fx:application refid="CS494_SHPicture_id"/>
+      <fileset dir="${artifact.temp.output.CS494_SHPicture}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_CS494_SHPicture"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value="SH Picture"/>
+        <attribute name="Implementation-Version" value="1.0.0"/>
+        <attribute name="Implementation-Vendor" value="SH Picture"/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="1280" height="720" updatemode="background" outdir="${artifact.temp.output.CS494_SHPicture}/deploy" outfile="CS494_SHPicture" nativeBundles="dmg">
+      <fx:application refid="CS494_SHPicture_id"/>
+      <fx:info title="SH Picture" vendor="SH Picture"/>
+      <fx:resources>
+        <fx:fileset refid="all_CS494_SHPicture"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.cs494-shpicture}">
+      <fileset dir="${artifact.temp.output.CS494_SHPicture}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.CS494_SHPicture}"/>
+    </delete>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.cs494-shpicture" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

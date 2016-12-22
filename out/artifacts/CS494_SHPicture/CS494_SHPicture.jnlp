@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CS494_SHPicture.jnlp">
+  <information>
+    <title>SH Picture</title>
+    <vendor>SH Picture</vendor>
+    <description>CS494-SHPicture</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CS494_SHPicture.jar" size="11941357" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="1280" height="720" main-class="com.cs494.client.Main"  name="CS494-SHPicture" />
+  <update check="background"/>
+</jnlp>

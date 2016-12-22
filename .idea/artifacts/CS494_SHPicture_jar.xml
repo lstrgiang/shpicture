@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CS494-SHPicture:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CS494_SHPicture_jar</output-path>
+    <root id="archive" name="CS494-SHPicture.jar">
+      <element id="module-output" name="CS494-SHPicture" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/sqlite-jdbc-3.8.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jfoenix.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
